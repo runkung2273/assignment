@@ -1,0 +1,20 @@
+<div id="assignment-page">
+    <div class="content-wrapper">
+        <div class="search-wrapper">
+            <input class="searchbox" type="text" placeholder="Search country.." [(ngModel)]="search">
+        </div>
+        <div class="country-box" *ngFor="let country of countries | FilterPipe: search">
+            <div class="countryname-population">
+                <div class="countryname">{{country.name.common}}</div>
+                <div class="population">population</div>
+            </div>
+            <div class="capital-region-population">
+                <div class="capital-region">
+                    <div class="capital">{{country.capital}}&nbsp;</div>
+                    <div class="region">{{country.subregion}}</div>
+                </div>
+                <div class="population">{{country.population}}</div>
+            </div>
+        </div>
+    </div>
+</div>
