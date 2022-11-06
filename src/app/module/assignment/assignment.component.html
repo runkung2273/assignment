@@ -5,7 +5,7 @@
         </div>
         <div class="country-box" *ngFor="let country of countries | FilterPipe: search">
             <div class="countryname-population">
-                <div class="countryname">{{country.name.common}}</div>
+                <div class="countryname">{{country.name}}</div>
                 <div class="population">population</div>
             </div>
             <div class="capital-region-population">

@@ -1,5 +1,13 @@
 import { Component ,OnInit} from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+import { map } from 'rxjs/operators';
+
+interface Country {
+  name: String,
+  capital: String,
+  subregion: String,
+  population: Number
+}
 
 @Component({
   selector: 'app-assignment',
@@ -7,7 +15,7 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ['./assignment.component.scss']
 })
 export class AssignmentComponent implements OnInit {
-  countries: any;
+  countries: Country[];
   search: any;
   constructor(private httpClient:HttpClient) { }
 
@@ -16,14 +24,23 @@ export class AssignmentComponent implements OnInit {
   }
 
   init(){
-    this.apiGetCountry();
+    this.apiGetCountry().subscribe(result => {
+      this.countries = result;
+    });
   }
   
   apiGetCountry(){
-    this.httpClient.get<any>('https://restcountries.com/v3.1/all').subscribe(
-      response => {
-        this.countries = response;
-      }
+    return this.httpClient.get<Country[]>('https://restcountries.com/v3.1/all').pipe(
+      map((response:any) => {
+          return response.map(e => {
+            return { 
+              name: e.name.common, 
+              capital: e.capital, 
+              population: e.population, 
+              subregion: e.subregion
+            };
+          })
+      })
     );
   }
 }

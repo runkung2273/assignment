@@ -8,7 +8,7 @@ export class FilterPipe implements PipeTransform {
         if (input) {
             input = input.toLowerCase();
             return value.filter(function (el: any) {
-                return el.name.common.toLowerCase().indexOf(input) > -1;
+                return el.name.toLowerCase().indexOf(input) > -1;
             })
         }
         return value;
