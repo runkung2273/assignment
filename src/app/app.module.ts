@@ -7,6 +7,7 @@ import { FilterPipe } from '../../../assignment/src/app/module/filterpipe/filter
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AssignmentComponent } from './module/assignment/assignment.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AssignmentComponent } from './module/assignment/assignment.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

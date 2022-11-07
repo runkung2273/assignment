@@ -17,6 +17,7 @@ interface Country {
 export class AssignmentComponent implements OnInit {
   countries: Country[];
   search: any;
+  currentPage: number = 1;
   constructor(private httpClient:HttpClient) { }
 
   ngOnInit() {
